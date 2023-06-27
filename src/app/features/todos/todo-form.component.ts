@@ -1,7 +1,10 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-todo-form',
+  standalone: true,
+  imports: [FormsModule],
   template: `
     <form (ngSubmit)="onSubmit()">
       <input type="text" name="todo" [(ngModel)]="control">

@@ -1,10 +1,14 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { Todo } from './todo-list.component';
 import { TodoFilter } from './todo-filter.component';
+import { CommonModule } from '@angular/common';
+import { HighlightDirective } from '../../directives/highlight.directive';
 
 // Stateless
 @Component({
   selector: 'app-todo-items',
+  standalone: true,
+  imports: [CommonModule, HighlightDirective],
   template: `
     <ul>
       <li *ngFor="let todo of filteredTodos; trackBy: trackByTodo">

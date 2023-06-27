@@ -1,9 +1,12 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 export type TodoFilter = 'ALL' | 'ACTIVE' | 'COMPLETED';
 
 @Component({
   selector: 'app-todo-filter',
+  standalone: true,
+  imports: [FormsModule],
   template: `
     <select [ngModel]="filter" (ngModelChange)="onModelChange($event)">
       <option value="ALL">All</option>

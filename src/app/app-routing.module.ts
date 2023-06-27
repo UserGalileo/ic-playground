@@ -10,11 +10,11 @@ const routes: Routes = [
   },
   {
     path: 'counter',
-    loadChildren: () => import('./features/counter/counter.module').then(m => m.CounterModule)
+    loadComponent: () => import('./features/counter/counter.component').then(m => m.CounterComponent)
   },
   {
     path: 'todos',
-    loadChildren: () => import('./features/todos/todos.module').then(m => m.TodosModule)
+    loadComponent: () => import('./features/todos/todo-list.component').then(m => m.TodoListComponent)
   }
 ];
 

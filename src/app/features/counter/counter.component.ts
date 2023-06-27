@@ -1,7 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { HighlightDirective } from '../../directives/highlight.directive';
 
 @Component({
   selector: 'app-counter',
+  standalone: true,
+  imports: [HighlightDirective],
   template: `
     <span appHighlight="yellow">{{ count }}</span>
     <button (click)="inc()">+</button>

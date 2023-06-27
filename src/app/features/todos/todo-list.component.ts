@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { TodoFilter } from './todo-filter.component';
+import { TodoFilter, TodoFilterComponent } from './todo-filter.component';
 import { TodosService } from '../../api/todos.service';
+import { TodoFormComponent } from './todo-form.component';
+import { TodoItemsComponent } from './todo-items.component';
 
 export interface Todo {
   id: string;
@@ -10,6 +12,8 @@ export interface Todo {
 
 @Component({
   selector: 'app-todo-list',
+  standalone: true,
+  imports: [TodoFormComponent, TodoFilterComponent, TodoItemsComponent],
   template: `
     <app-todo-form
       (addTodo)="onAddTodo($event)"
@@ -24,7 +28,6 @@ export interface Todo {
       (toggleTodo)="onToggleTodo($event)"
     ></app-todo-items>
   `,
-  providers: []
 })
 export class TodoListComponent implements OnInit {
 
