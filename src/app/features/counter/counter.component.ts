@@ -3,7 +3,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 @Component({
   selector: 'app-counter',
   template: `
-    {{ count }}
+    <span appHighlight="yellow">{{ count }}</span>
     <button (click)="inc()">+</button>
     <button (click)="dec()">-</button>
   `,
