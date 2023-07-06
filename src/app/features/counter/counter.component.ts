@@ -1,14 +1,17 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { HighlightDirective } from '../../directives/highlight.directive';
+import { CardComponent } from '../../components/card.component';
 
 @Component({
   selector: 'app-counter',
   standalone: true,
-  imports: [HighlightDirective],
+  imports: [CardComponent],
   template: `
-    <span appHighlight="yellow">{{ count }}</span>
+    <span>{{ count }}</span>
     <button (click)="inc()">+</button>
     <button (click)="dec()">-</button>
+
+    <br>
+    <app-card title="Lorem ipsum"></app-card>
   `,
 })
 export class CounterComponent {
