@@ -1,14 +1,54 @@
 {
-  "todos": [
+  "clients": [
     {
-      "text": "Studiare",
-      "completed": true,
-      "id": "Y498uqd"
+      "id": "client-1",
+      "name": "Mario Rossi"
     },
     {
-      "text": "Mangiare",
-      "completed": false,
-      "id": "pcrrtgl"
+      "id": "client-2",
+      "name": "John Doe"
+    }
+  ],
+  "invoices": [
+    {
+      "id": "invoice-1",
+      "subject": "Fattura 1",
+      "clientId": "client-1",
+      "items": [
+        {
+          "text": "item 1",
+          "price": 10
+        },
+        {
+          "text": "item 2",
+          "price": 20
+        }
+      ],
+      "total": 30
+    },
+    {
+      "id": "invoice-2",
+      "subject": "Fattura 2",
+      "clientId": "client-2",
+      "items": [
+        {
+          "text": "item 1",
+          "price": 10
+        }
+      ],
+      "total": 10
+    },
+    {
+      "subject": "",
+      "total": 0,
+      "items": [],
+      "id": "moLGzaj"
+    },
+    {
+      "subject": "",
+      "total": 0,
+      "items": [],
+      "id": "dXWSGFl"
     }
   ]
 }
