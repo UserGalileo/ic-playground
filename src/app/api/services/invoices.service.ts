@@ -23,6 +23,6 @@ export class InvoicesService {
   }
 
   editInvoice(invoice: Invoice) {
-    return this.http.put<Invoice>(`${env.apiUrl}/invoices`, invoice);
+    return this.http.put<Invoice>(`${env.apiUrl}/invoices/${invoice.id}`, invoice);
   }
 }

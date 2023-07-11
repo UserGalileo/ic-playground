@@ -9,7 +9,10 @@ const routes: Routes = [
     children: [
       {
         path: ':id',
-        component: InvoiceComponent
+        component: InvoiceComponent,
+        canDeactivate: [
+          (component: InvoiceComponent) => component.canDeactivate()
+        ]
       },
     ]
   }

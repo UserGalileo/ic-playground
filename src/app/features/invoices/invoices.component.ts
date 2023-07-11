@@ -1,20 +1,20 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { Invoice } from '../../api/models';
-import { InvoicesService } from '../../api/services/invoices.service';
 import { CommonModule } from '@angular/common';
+import { InvoicesStore } from './invoices.store';
 
 @Component({
   selector: 'app-invoices',
   standalone: true,
   imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [InvoicesStore],
   template: `
     <div class="invoices-container">
       <div class="invoice-list">
         <h3>Invoices</h3>
         <ul>
-          <li *ngFor="let invoice of invoices">
+          <li *ngFor="let invoice of (invoices$ | async)">
             <a
               class="invoice-list-item"
               [routerLink]="'/invoices/' + invoice.id"
@@ -30,26 +30,17 @@ import { CommonModule } from '@angular/common';
     </div>
   `
 })
-export class InvoicesComponent {
+export class InvoicesComponent implements OnInit {
 
-  invoicesService = inject(InvoicesService);
+  store = inject(InvoicesStore);
 
-  invoices: Invoice[] = [];
+  invoices$ = this.store.invoices$;
 
   ngOnInit() {
-    this.invoicesService.loadInvoices().subscribe(invoices => {
-      this.invoices = invoices;
-    })
+    this.store.loadInvoices();
   }
 
   createInvoice() {
-    this.invoicesService.addInvoice({
-      subject: '',
-      total: 0,
-      items: []
-    }).subscribe(invoice => {
-      this.invoices = [...this.invoices, invoice];
-    })
+    this.store.createInvoice();
   }
-
 }
